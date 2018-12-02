@@ -1,2 +1,2 @@
 # non-blog
-Thoughts, observations, stuff that worked for me
+Thoughts, observations, lessons learned, stuff that worked for me
