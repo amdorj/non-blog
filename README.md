@@ -7,5 +7,5 @@ This repo is meant to collect odd thoughts, observations, lessons learned, and s
 
 ## Links:
 
-### * [YYYY-MM-DD and Calculating Dates](https://github.com/anthonykava/non-blog/blob/master/doc/0000.YYYY-MM-DD.and.Calculating.Dates.md)
-### * Can't have just one bullet point...
+* [YYYY-MM-DD and Calculating Dates](https://github.com/anthonykava/non-blog/blob/master/doc/0000.YYYY-MM-DD.and.Calculating.Dates.md)
+* Can't have just one bullet point...
