@@ -10,23 +10,24 @@ alias openssldump='openssl x509 -noout -text -in'                           # du
 alias dis='disown'                                                          # disown backgrounded process
 alias c='clear'                                                             # yeah, CTRL+L, whatever
 alias d='du -hslc * | sort -h'                                              # human-sorted size of files/dirs
-qr() { r2 -qc "w $@;pqz" - | sed 's/ /█/g' | sed 's/\#/ /g'; }				# generate a QR code (function)
-alias qrcode='qr'															# alias for qr()
+qr() { r2 -qc "w $@;pqz" - | sed 's/ /█/g' | sed 's/\#/ /g'; }              # generate a QR code (function)
+alias qrcode='qr'                                                           # alias for qr()
 
 # applications
-alias s='ssh'																# nickname for ssh
+alias s='ssh'                                                               # nickname for ssh
 alias incognito='chromium-browser --incognito'                              # quick launch incognito Chromium
 alias incog='incognito'                                                     # shortened
 alias 7zenc='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'   # create encrypted 7-zip archive
 alias xnv='xnview . >/dev/null 2>&1'                                        # launch xnView for current dir
 alias httpServer='python -m SimpleHTTPServer'                               # start the python SimpleHTTPServer
 alias httpServer3='python3 -m http.server'                                  # python3 equiv for SimpleHTTPServer
+alias gitpush='git -u origin master'                                        # lazy git push to master
 
 # GUI
-alias copy='xsel -i'														# copy STDIN to primary selection
-alias paste='xsel -o'														# paste primary selection to STDOUT
-alias copyclip='xsel -bi'													# copy STDIN to clipboard
-alias pasteclip='xsel -bo'													# paste clipboard to STDOUT
+alias copy='xsel -i'                                                        # copy STDIN to primary selection
+alias paste='xsel -o'                                                       # paste primary selection to STDOUT
+alias copyclip='xsel -bi'                                                   # copy STDIN to clipboard
+alias pasteclip='xsel -bo'                                                  # paste clipboard to STDOUT
 alias open='xdg-open'                                                       # open in X Windows
 
 # directory ops
