@@ -12,4 +12,5 @@ This repo is meant to collect odd thoughts, observations, lessons learned, and s
 ## Links
 
 * [My favourite .bash_aliases](https://github.com/anthonykava/non-blog/blob/master/file/.bash_aliases)
+* [Kludgey script to check our CyberPatriot scores (2018)](https://github.com/anthonykava/non-blog/blob/master/file/cypats.lynx.get.scores.2018.pl)
 * [YYYY-MM-DD and Calculating Dates](https://github.com/anthonykava/non-blog/blob/master/doc/0000.YYYY-MM-DD.and.Calculating.Dates.md)
