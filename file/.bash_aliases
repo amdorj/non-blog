@@ -5,7 +5,7 @@
 # https://github.com/anthonykava/non-blog
 # @anthonykava 2018-12-04
 
-# Util / Misc
+# util / misc
 alias openssldump='openssl x509 -noout -text -in'                           # dump .pem for human-readability
 alias dis='disown'                                                          # disown backgrounded process
 alias c='clear'                                                             # yeah, CTRL+L, whatever
@@ -21,7 +21,7 @@ alias 7zenc='7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p'   # cr
 alias xnv='xnview . >/dev/null 2>&1'                                        # launch xnView for current dir
 alias httpServer='python -m SimpleHTTPServer'                               # start the python SimpleHTTPServer
 alias httpServer3='python3 -m http.server'                                  # python3 equiv for SimpleHTTPServer
-alias gitpush='git -u origin master'                                        # lazy git push to master
+alias gitpush='git push -u origin master'                                   # lazy git push to master
 
 # GUI
 alias copy='xsel -i'                                                        # copy STDIN to primary selection
