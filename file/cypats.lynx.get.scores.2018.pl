@@ -2,18 +2,20 @@
 
 #========================================================================
 # cypats.lynx.get.scores.2018.pl -- get ALHS Cyber Lynx scores 2018-2019
-# @karver 2018-11-28.1609.ACK 
+# @anthonykava created 2018-11-28.1609.ACK 
 #========================================================================
 
-use strict;								# of course
-use warnings;							# why not?
+use strict;														# of course
+use warnings;													# why not?
 
 # variables
-our $debug	= shift()||0;				# debug 0=none, 1=some
-my  %teams	= qw/11-0414 1 11-0415 1/;	# last year 10-4906 10-1181 10-3729/;
-my  %last	= ();						# hash to track last timed scores
-my  @header	= ();						# array to hold headers for table data
-my  %scores	= ();						# to hold cumulative scores
+our $debug				= shift()||0;							# debug 0=none, 1=some
+my  %teams				= qw/11-0414 1 11-0415 1 11-0531 1/;	# last year 10-4906 10-1181 10-3729/;
+my  %teamDivTiers		= ();									# will hold divTiers we want
+my  %teamDivTierLocs	= ();									# will hold divTiers we want
+my  %last				= ();									# hash to track last timed scores
+my  @header				= ();									# array to hold headers for table data
+my  %scores				= ();									# to hold cumulative scores
 
 # iterate through our teams
 foreach my $team (sort(keys(%teams)))
@@ -87,8 +89,8 @@ my $file='tmp.cypats.team.'.$$;
 # process our input
 if(-e $file && open(my $fh,$file))	# test $file exists and open() the thing
 {
-	my $divTierCount=0;
-	my $divTierLocCount=0;
+	my %divTierCounts=();
+	my %divTierLocCounts=();
 	foreach(<$fh>)					# iterate through lines in $file
 	{
 		chomp();					# chomp() new lines
@@ -104,17 +106,29 @@ if(-e $file && open(my $fh,$file))	# test $file exists and open() the thing
 			$stuff=~s/<\/b>//g;
 			my($foo,$rank,$team,$loc,$div,$tier,$scoredImages,$time,$warn,$ccs)=split(/<\/td><td>/,$stuff);
 			my $stars=$teams{$team} ? "\t***" : '';
-			$divTierCount++ if $div eq 'Open' && $tier eq 'High School';
-			$divTierLocCount++ if $div eq 'Open' && $tier eq 'High School' && $loc eq 'IA';
-			printf("Rank #%04d: Team $team Loc: $loc (DivTierLoc #%02d) Div/Tier: ${div}/${tier} (#%03d) Images: $scoredImages Time: $time Warn: $warn CCS: ${ccs}%s\n",$rank,$divTierLocCount,$divTierCount,$stars);
+			my $divTier=$div.'-'.$tier;
+			my $divTierLoc=$divTier.'-'.$loc;
+			$divTierCounts{$divTier}++;
+			$divTierLocCounts{$divTierLoc}++;
+			$teamDivTiers{$divTier}=1 if $teams{$team};
+			$teamDivTierLocs{$divTierLoc}=1 if $teams{$team};
+			printf("Rank #%04d: Team $team Loc: $loc (DivTierLoc #%02d) Div-Tier: ${divTier} (#%03d) Images: $scoredImages Time: $time Warn: $warn CCS: ${ccs}%s\n",$rank,$divTierLocCounts{$divTierLoc},$divTierCounts{$divTier},$stars);
 		}
 	}
 	close($fh);
 	unlink($file) if !$debug;
-	print	"\n".
-			"Total divTier:    $divTierCount\n".
-			"Total divTierLoc: $divTierLocCount\n".
-			"\n";
+
+	print "\n";
+	foreach my $divTier (sort(keys(%divTierCounts)))
+	{
+		print "\t***   divTier=$divTier\t$divTierCounts{$divTier}\n" if $teamDivTiers{$divTier};
+	}
+	print "\n";
+	foreach my $divTierLoc (sort(keys(%divTierLocCounts)))
+	{
+		print "\t*** divTierLoc=$divTierLoc\t$divTierLocCounts{$divTierLoc}\n" if $teamDivTierLocs{$divTierLoc};
+	}
+	print "\n";
 }
 
 
