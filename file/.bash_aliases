@@ -39,6 +39,12 @@ alias _='cd -'                                                              # la
 alias cd-='cd -'                                                            # last dir   (oldie)
 alias md='mkdir'                                                            # in case I'm lost
 alias rd='rmdir'                                                            # in case I'm lost
+alias lh='ls -lhS'															# by size desc human
+alias lhs='ls -lhS'															# by size desc human
+alias lsh='ls -lhS'															# by size desc human
+alias lt='ls -lt'															# by time desc
+alias lth='ls -lth'															# by time desc human
+alias lht='ls -lht'															# by time desc human
 
 # copy/move/remove
 alias cp='cp -iv'                                                           # safety third
